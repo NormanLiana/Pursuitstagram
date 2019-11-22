@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,6 @@
 		A54784FF2386DB5900FB3306 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54784FE2386DB5900FB3306 /* AppDelegate.swift */; };
 		A54785012386DB5900FB3306 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54785002386DB5900FB3306 /* SceneDelegate.swift */; };
 		A54785032386DB5900FB3306 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54785022386DB5900FB3306 /* ViewController.swift */; };
-		A54785062386DB5900FB3306 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A54785042386DB5900FB3306 /* Main.storyboard */; };
 		A54785092386DB5900FB3306 /* Pursuitstagram_Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A54785072386DB5900FB3306 /* Pursuitstagram_Project.xcdatamodeld */; };
 		A547850B2386DB5F00FB3306 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A547850A2386DB5F00FB3306 /* Assets.xcassets */; };
 		A547850E2386DB5F00FB3306 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A547850C2386DB5F00FB3306 /* LaunchScreen.storyboard */; };
@@ -37,7 +36,6 @@
 		A54784FE2386DB5900FB3306 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A54785002386DB5900FB3306 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		A54785022386DB5900FB3306 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		A54785052386DB5900FB3306 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A54785082386DB5900FB3306 /* Pursuitstagram_Project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pursuitstagram_Project.xcdatamodel; sourceTree = "<group>"; };
 		A547850A2386DB5F00FB3306 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A547850D2386DB5F00FB3306 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -80,7 +78,6 @@
 				DEAA35A28F5BA722205DAB45 /* Pods-Pursuitstagram-ProjectTests.debug.xcconfig */,
 				19357167F91AD24E24EE1DE3 /* Pods-Pursuitstagram-ProjectTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -110,7 +107,6 @@
 				A54784FE2386DB5900FB3306 /* AppDelegate.swift */,
 				A54785002386DB5900FB3306 /* SceneDelegate.swift */,
 				A54785022386DB5900FB3306 /* ViewController.swift */,
-				A54785042386DB5900FB3306 /* Main.storyboard */,
 				A547850A2386DB5F00FB3306 /* Assets.xcassets */,
 				A547850C2386DB5F00FB3306 /* LaunchScreen.storyboard */,
 				A547850F2386DB5F00FB3306 /* Info.plist */,
@@ -225,7 +221,6 @@
 				A547850E2386DB5F00FB3306 /* LaunchScreen.storyboard in Resources */,
 				A547852B2388600800FB3306 /* GoogleService-Info.plist in Resources */,
 				A547850B2386DB5F00FB3306 /* Assets.xcassets in Resources */,
-				A54785062386DB5900FB3306 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -333,14 +328,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		A54785042386DB5900FB3306 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A54785052386DB5900FB3306 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		A547850C2386DB5F00FB3306 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
