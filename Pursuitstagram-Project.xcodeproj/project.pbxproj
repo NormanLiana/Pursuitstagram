@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		222B54BACADCD1CEA7F8292E /* Pods_Pursuitstagram_Project.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6D19B73F097EF313FCC8CB2 /* Pods_Pursuitstagram_Project.framework */; };
+		907142E96DBFEA6C3D35EE38 /* Pods_Pursuitstagram_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E64D57A30A3156A0ED8719 /* Pods_Pursuitstagram_ProjectTests.framework */; };
 		A54784FF2386DB5900FB3306 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54784FE2386DB5900FB3306 /* AppDelegate.swift */; };
 		A54785012386DB5900FB3306 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54785002386DB5900FB3306 /* SceneDelegate.swift */; };
 		A54785032386DB5900FB3306 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54785022386DB5900FB3306 /* ViewController.swift */; };
@@ -15,6 +17,7 @@
 		A547850B2386DB5F00FB3306 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A547850A2386DB5F00FB3306 /* Assets.xcassets */; };
 		A547850E2386DB5F00FB3306 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A547850C2386DB5F00FB3306 /* LaunchScreen.storyboard */; };
 		A54785192386DB5F00FB3306 /* Pursuitstagram_ProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54785182386DB5F00FB3306 /* Pursuitstagram_ProjectTests.swift */; };
+		A547852B2388600800FB3306 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A547852A2388600800FB3306 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -28,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		19357167F91AD24E24EE1DE3 /* Pods-Pursuitstagram-ProjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pursuitstagram-ProjectTests.release.xcconfig"; path = "Target Support Files/Pods-Pursuitstagram-ProjectTests/Pods-Pursuitstagram-ProjectTests.release.xcconfig"; sourceTree = "<group>"; };
+		A29E862EFFEF507C54926D28 /* Pods-Pursuitstagram-Project.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pursuitstagram-Project.debug.xcconfig"; path = "Target Support Files/Pods-Pursuitstagram-Project/Pods-Pursuitstagram-Project.debug.xcconfig"; sourceTree = "<group>"; };
 		A54784FB2386DB5900FB3306 /* Pursuitstagram-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pursuitstagram-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54784FE2386DB5900FB3306 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A54785002386DB5900FB3306 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,6 +45,11 @@
 		A54785142386DB5F00FB3306 /* Pursuitstagram-ProjectTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Pursuitstagram-ProjectTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54785182386DB5F00FB3306 /* Pursuitstagram_ProjectTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pursuitstagram_ProjectTests.swift; sourceTree = "<group>"; };
 		A547851A2386DB5F00FB3306 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A547852A2388600800FB3306 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Documents/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C3E64D57A30A3156A0ED8719 /* Pods_Pursuitstagram_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pursuitstagram_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C52D1BC57206230CA3722326 /* Pods-Pursuitstagram-Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pursuitstagram-Project.release.xcconfig"; path = "Target Support Files/Pods-Pursuitstagram-Project/Pods-Pursuitstagram-Project.release.xcconfig"; sourceTree = "<group>"; };
+		C6D19B73F097EF313FCC8CB2 /* Pods_Pursuitstagram_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pursuitstagram_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEAA35A28F5BA722205DAB45 /* Pods-Pursuitstagram-ProjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pursuitstagram-ProjectTests.debug.xcconfig"; path = "Target Support Files/Pods-Pursuitstagram-ProjectTests/Pods-Pursuitstagram-ProjectTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				222B54BACADCD1CEA7F8292E /* Pods_Pursuitstagram_Project.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,18 +65,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				907142E96DBFEA6C3D35EE38 /* Pods_Pursuitstagram_ProjectTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9EEC14361E0E54E2EA21B35D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A29E862EFFEF507C54926D28 /* Pods-Pursuitstagram-Project.debug.xcconfig */,
+				C52D1BC57206230CA3722326 /* Pods-Pursuitstagram-Project.release.xcconfig */,
+				DEAA35A28F5BA722205DAB45 /* Pods-Pursuitstagram-ProjectTests.debug.xcconfig */,
+				19357167F91AD24E24EE1DE3 /* Pods-Pursuitstagram-ProjectTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A54784F22386DB5900FB3306 = {
 			isa = PBXGroup;
 			children = (
 				A54784FD2386DB5900FB3306 /* Pursuitstagram-Project */,
 				A54785172386DB5F00FB3306 /* Pursuitstagram-ProjectTests */,
 				A54784FC2386DB5900FB3306 /* Products */,
+				9EEC14361E0E54E2EA21B35D /* Pods */,
+				E1E7686F7B04F6FE0136D1D2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -88,6 +114,7 @@
 				A547850A2386DB5F00FB3306 /* Assets.xcassets */,
 				A547850C2386DB5F00FB3306 /* LaunchScreen.storyboard */,
 				A547850F2386DB5F00FB3306 /* Info.plist */,
+				A547852A2388600800FB3306 /* GoogleService-Info.plist */,
 				A54785072386DB5900FB3306 /* Pursuitstagram_Project.xcdatamodeld */,
 			);
 			path = "Pursuitstagram-Project";
@@ -102,6 +129,15 @@
 			path = "Pursuitstagram-ProjectTests";
 			sourceTree = "<group>";
 		};
+		E1E7686F7B04F6FE0136D1D2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C6D19B73F097EF313FCC8CB2 /* Pods_Pursuitstagram_Project.framework */,
+				C3E64D57A30A3156A0ED8719 /* Pods_Pursuitstagram_ProjectTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -109,9 +145,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A547851D2386DB5F00FB3306 /* Build configuration list for PBXNativeTarget "Pursuitstagram-Project" */;
 			buildPhases = (
+				C62B6EF1DA980734FD8F0AB5 /* [CP] Check Pods Manifest.lock */,
 				A54784F72386DB5900FB3306 /* Sources */,
 				A54784F82386DB5900FB3306 /* Frameworks */,
 				A54784F92386DB5900FB3306 /* Resources */,
+				7E1FC5788834A4F02A3AA3CD /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,6 +164,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A54785202386DB5F00FB3306 /* Build configuration list for PBXNativeTarget "Pursuitstagram-ProjectTests" */;
 			buildPhases = (
+				736613444CD6283EB6597D45 /* [CP] Check Pods Manifest.lock */,
 				A54785102386DB5F00FB3306 /* Sources */,
 				A54785112386DB5F00FB3306 /* Frameworks */,
 				A54785122386DB5F00FB3306 /* Resources */,
@@ -184,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A547850E2386DB5F00FB3306 /* LaunchScreen.storyboard in Resources */,
+				A547852B2388600800FB3306 /* GoogleService-Info.plist in Resources */,
 				A547850B2386DB5F00FB3306 /* Assets.xcassets in Resources */,
 				A54785062386DB5900FB3306 /* Main.storyboard in Resources */,
 			);
@@ -197,6 +237,70 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		736613444CD6283EB6597D45 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pursuitstagram-ProjectTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7E1FC5788834A4F02A3AA3CD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pursuitstagram-Project/Pods-Pursuitstagram-Project-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Pursuitstagram-Project/Pods-Pursuitstagram-Project-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pursuitstagram-Project/Pods-Pursuitstagram-Project-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C62B6EF1DA980734FD8F0AB5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Pursuitstagram-Project-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A54784F72386DB5900FB3306 /* Sources */ = {
@@ -364,6 +468,7 @@
 		};
 		A547851E2386DB5F00FB3306 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A29E862EFFEF507C54926D28 /* Pods-Pursuitstagram-Project.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -381,6 +486,7 @@
 		};
 		A547851F2386DB5F00FB3306 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C52D1BC57206230CA3722326 /* Pods-Pursuitstagram-Project.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -398,6 +504,7 @@
 		};
 		A54785212386DB5F00FB3306 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEAA35A28F5BA722205DAB45 /* Pods-Pursuitstagram-ProjectTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -419,6 +526,7 @@
 		};
 		A54785222386DB5F00FB3306 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 19357167F91AD24E24EE1DE3 /* Pods-Pursuitstagram-ProjectTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
