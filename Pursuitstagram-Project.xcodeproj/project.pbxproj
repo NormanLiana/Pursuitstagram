@@ -102,6 +102,7 @@
 		A54784FD2386DB5900FB3306 /* Pursuitstagram-Project */ = {
 			isa = PBXGroup;
 			children = (
+				A547855F2388B9AA00FB3306 /* Controllers */,
 				A54784FE2386DB5900FB3306 /* AppDelegate.swift */,
 				A54785002386DB5900FB3306 /* SceneDelegate.swift */,
 				A547850A2386DB5F00FB3306 /* Assets.xcassets */,
@@ -120,6 +121,13 @@
 				A547851A2386DB5F00FB3306 /* Info.plist */,
 			);
 			path = "Pursuitstagram-ProjectTests";
+			sourceTree = "<group>";
+		};
+		A547855F2388B9AA00FB3306 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		E1E7686F7B04F6FE0136D1D2 /* Frameworks */ = {
