@@ -103,10 +103,8 @@
 			isa = PBXGroup;
 			children = (
 				A547855F2388B9AA00FB3306 /* Controllers */,
-				A54784FE2386DB5900FB3306 /* AppDelegate.swift */,
-				A54785002386DB5900FB3306 /* SceneDelegate.swift */,
+				A54785602388BA5400FB3306 /* SupportingFiles */,
 				A547850A2386DB5F00FB3306 /* Assets.xcassets */,
-				A547850C2386DB5F00FB3306 /* LaunchScreen.storyboard */,
 				A547850F2386DB5F00FB3306 /* Info.plist */,
 				A547852A2388600800FB3306 /* GoogleService-Info.plist */,
 				A54785072386DB5900FB3306 /* Pursuitstagram_Project.xcdatamodeld */,
@@ -128,6 +126,16 @@
 			children = (
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		A54785602388BA5400FB3306 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				A54784FE2386DB5900FB3306 /* AppDelegate.swift */,
+				A54785002386DB5900FB3306 /* SceneDelegate.swift */,
+				A547850C2386DB5F00FB3306 /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		E1E7686F7B04F6FE0136D1D2 /* Frameworks */ = {
