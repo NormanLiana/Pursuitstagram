@@ -11,7 +11,6 @@
 		907142E96DBFEA6C3D35EE38 /* Pods_Pursuitstagram_ProjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C3E64D57A30A3156A0ED8719 /* Pods_Pursuitstagram_ProjectTests.framework */; };
 		A54784FF2386DB5900FB3306 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54784FE2386DB5900FB3306 /* AppDelegate.swift */; };
 		A54785012386DB5900FB3306 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54785002386DB5900FB3306 /* SceneDelegate.swift */; };
-		A54785032386DB5900FB3306 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54785022386DB5900FB3306 /* ViewController.swift */; };
 		A54785092386DB5900FB3306 /* Pursuitstagram_Project.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A54785072386DB5900FB3306 /* Pursuitstagram_Project.xcdatamodeld */; };
 		A547850B2386DB5F00FB3306 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A547850A2386DB5F00FB3306 /* Assets.xcassets */; };
 		A547850E2386DB5F00FB3306 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A547850C2386DB5F00FB3306 /* LaunchScreen.storyboard */; };
@@ -35,7 +34,6 @@
 		A54784FB2386DB5900FB3306 /* Pursuitstagram-Project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pursuitstagram-Project.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A54784FE2386DB5900FB3306 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A54785002386DB5900FB3306 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A54785022386DB5900FB3306 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A54785082386DB5900FB3306 /* Pursuitstagram_Project.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pursuitstagram_Project.xcdatamodel; sourceTree = "<group>"; };
 		A547850A2386DB5F00FB3306 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A547850D2386DB5F00FB3306 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 			children = (
 				A54784FE2386DB5900FB3306 /* AppDelegate.swift */,
 				A54785002386DB5900FB3306 /* SceneDelegate.swift */,
-				A54785022386DB5900FB3306 /* ViewController.swift */,
 				A547850A2386DB5F00FB3306 /* Assets.xcassets */,
 				A547850C2386DB5F00FB3306 /* LaunchScreen.storyboard */,
 				A547850F2386DB5F00FB3306 /* Info.plist */,
@@ -303,7 +300,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A54785092386DB5900FB3306 /* Pursuitstagram_Project.xcdatamodeld in Sources */,
-				A54785032386DB5900FB3306 /* ViewController.swift in Sources */,
 				A54784FF2386DB5900FB3306 /* AppDelegate.swift in Sources */,
 				A54785012386DB5900FB3306 /* SceneDelegate.swift in Sources */,
 			);
