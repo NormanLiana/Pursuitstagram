@@ -20,6 +20,7 @@
 		A54785642388D9F300FB3306 /* CreateAccountVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54785632388D9F300FB3306 /* CreateAccountVC.swift */; };
 		A54785662388DA7700FB3306 /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54785652388DA7700FB3306 /* ProfileVC.swift */; };
 		A54785682388DB0400FB3306 /* FeedVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54785672388DB0400FB3306 /* FeedVC.swift */; };
+		A547856A2388DB6100FB3306 /* ImageUploadVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54785692388DB6100FB3306 /* ImageUploadVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		A54785632388D9F300FB3306 /* CreateAccountVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountVC.swift; sourceTree = "<group>"; };
 		A54785652388DA7700FB3306 /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		A54785672388DB0400FB3306 /* FeedVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedVC.swift; sourceTree = "<group>"; };
+		A54785692388DB6100FB3306 /* ImageUploadVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadVC.swift; sourceTree = "<group>"; };
 		C3E64D57A30A3156A0ED8719 /* Pods_Pursuitstagram_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pursuitstagram_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C52D1BC57206230CA3722326 /* Pods-Pursuitstagram-Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pursuitstagram-Project.release.xcconfig"; path = "Target Support Files/Pods-Pursuitstagram-Project/Pods-Pursuitstagram-Project.release.xcconfig"; sourceTree = "<group>"; };
 		C6D19B73F097EF313FCC8CB2 /* Pods_Pursuitstagram_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pursuitstagram_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +138,7 @@
 				A54785632388D9F300FB3306 /* CreateAccountVC.swift */,
 				A54785652388DA7700FB3306 /* ProfileVC.swift */,
 				A54785672388DB0400FB3306 /* FeedVC.swift */,
+				A54785692388DB6100FB3306 /* ImageUploadVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				A54785622388BDD800FB3306 /* LogInVC.swift in Sources */,
 				A54785642388D9F300FB3306 /* CreateAccountVC.swift in Sources */,
 				A54785012386DB5900FB3306 /* SceneDelegate.swift in Sources */,
+				A547856A2388DB6100FB3306 /* ImageUploadVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
