@@ -26,6 +26,7 @@
 		A5478572238B330100FB3306 /* FirebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5478571238B330100FB3306 /* FirebaseAuthService.swift */; };
 		A5478574238B337C00FB3306 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5478573238B337C00FB3306 /* FirestoreService.swift */; };
 		A5478577238B38F700FB3306 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5478576238B38F700FB3306 /* String+Extensions.swift */; };
+		A547857C238B3C2300FB3306 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = A547857B238B3C2300FB3306 /* AppUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		A5478571238B330100FB3306 /* FirebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthService.swift; sourceTree = "<group>"; };
 		A5478573238B337C00FB3306 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
 		A5478576238B38F700FB3306 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		A547857B238B3C2300FB3306 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		C3E64D57A30A3156A0ED8719 /* Pods_Pursuitstagram_ProjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pursuitstagram_ProjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C52D1BC57206230CA3722326 /* Pods-Pursuitstagram-Project.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pursuitstagram-Project.release.xcconfig"; path = "Target Support Files/Pods-Pursuitstagram-Project/Pods-Pursuitstagram-Project.release.xcconfig"; sourceTree = "<group>"; };
 		C6D19B73F097EF313FCC8CB2 /* Pods_Pursuitstagram_Project.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pursuitstagram_Project.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -196,6 +198,7 @@
 		A547857A238B3B8600FB3306 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A547857B238B3C2300FB3306 /* AppUser.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -377,6 +380,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A547857C238B3C2300FB3306 /* AppUser.swift in Sources */,
 				A547856C2388DBC900FB3306 /* ImageDVC.swift in Sources */,
 				A5478577238B38F700FB3306 /* String+Extensions.swift in Sources */,
 				A5478574238B337C00FB3306 /* FirestoreService.swift in Sources */,
