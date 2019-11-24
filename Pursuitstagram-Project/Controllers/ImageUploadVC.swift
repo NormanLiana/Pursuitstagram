@@ -20,7 +20,7 @@ class ImageUploadVC: UIViewController {
         return label
     }()
     
-    lazy var image: UIImageView = {
+    lazy var imageToUpload: UIImageView = {
        let img = UIImageView()
         img.backgroundColor = .white
         return img
@@ -48,7 +48,7 @@ class ImageUploadVC: UIViewController {
     // MARK: - Private Methods
     private func addSubViews() {
         view.addSubview(headerLabel)
-        view.addSubview(image)
+        view.addSubview(imageToUpload)
         view.addSubview(uploadButton)
     }
     
@@ -64,9 +64,9 @@ class ImageUploadVC: UIViewController {
     }
     
     private func constrainImage() {
-        image.translatesAutoresizingMaskIntoConstraints = false
+        imageToUpload.translatesAutoresizingMaskIntoConstraints = false
         
-        [image.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor), image.centerXAnchor.constraint(equalTo: view.centerXAnchor), image.widthAnchor.constraint(equalTo: image.heightAnchor), image.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.33)].forEach({$0.isActive = true})
+        [imageToUpload.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor), imageToUpload.centerXAnchor.constraint(equalTo: view.centerXAnchor), imageToUpload.widthAnchor.constraint(equalTo: imageToUpload.heightAnchor), imageToUpload.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.33)].forEach({$0.isActive = true})
     }
     
     private func constrainUploadButton() {
