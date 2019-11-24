@@ -120,6 +120,7 @@
 		A54784FD2386DB5900FB3306 /* Pursuitstagram-Project */ = {
 			isa = PBXGroup;
 			children = (
+				A5478575238B389300FB3306 /* Utilities */,
 				A5478570238B328300FB3306 /* Firebase */,
 				A547856D238AEFF300FB3306 /* Views */,
 				A547855F2388B9AA00FB3306 /* Controllers */,
@@ -179,6 +180,13 @@
 				A5478573238B337C00FB3306 /* FirestoreService.swift */,
 			);
 			path = Firebase;
+			sourceTree = "<group>";
+		};
+		A5478575238B389300FB3306 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		E1E7686F7B04F6FE0136D1D2 /* Frameworks */ = {
