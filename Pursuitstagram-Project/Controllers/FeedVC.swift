@@ -46,6 +46,7 @@ class FeedVC: UIViewController {
     
     private func setUpVCView() {
         view.backgroundColor = .black
+        navigationController?.isNavigationBarHidden = true
     }
     
     private func delegation() {
