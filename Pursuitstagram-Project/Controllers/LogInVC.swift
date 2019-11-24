@@ -11,7 +11,7 @@ import UIKit
 class LogInVC: UIViewController {
     
     // MARK: - UI Objects
-    lazy var appNameLabel: UILabel = {
+    lazy var headerLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemPink
         label.font = UIFont(name: "Futura-CondensedExtraBold", size: 44)
@@ -25,7 +25,7 @@ class LogInVC: UIViewController {
         tf.backgroundColor = .white
         tf.textColor = .black
         tf.placeholder = "Email address"
-        tf.layer.cornerRadius = 10
+        tf.borderStyle = .roundedRect
         return tf
     }()
     
@@ -34,7 +34,7 @@ class LogInVC: UIViewController {
         tf.backgroundColor = .white
         tf.textColor = .black
         tf.placeholder = "Password"
-        tf.layer.cornerRadius = 10
+        tf.borderStyle = .roundedRect
         return tf
     }()
     
@@ -70,7 +70,7 @@ class LogInVC: UIViewController {
     
     // MARK: Private Methods
     private func addSubViews() {
-        view.addSubview(appNameLabel)
+        view.addSubview(headerLabel)
         view.addSubview(emailTF)
         view.addSubview(passwordTF)
         view.addSubview(logInButton)
@@ -83,9 +83,9 @@ class LogInVC: UIViewController {
     
     // MARK: - Constraint Methods
     private func constrainAppNameLabel() {
-        appNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [appNameLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 45), appNameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor), appNameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor), appNameLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.2)].forEach({$0.isActive = true})
+        [headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 45), headerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor), headerLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor), headerLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.2)].forEach({$0.isActive = true})
     }
     
     private func constrainEmailTF() {
