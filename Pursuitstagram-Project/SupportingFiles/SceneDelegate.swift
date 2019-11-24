@@ -20,7 +20,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         //MARK: TODO - switch root view controller on firebase current user.
         //Discussion - is the iOS currentUser object token-safe with the authentication service?
-        window?.rootViewController = LogInVC()
+        
+        let profileVC = ProfileVC()
+        let feedVC = FeedVC()
+        
+        feedVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "house.fill"), tag: 0)
+        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.circle"), tag: 1)
+        
+        let navController = UINavigationController(rootViewController: feedVC)
+        let tabBarController = UITabBarController()
+        
+        tabBarController.viewControllers = [navController, profileVC]
+        
+        window?.rootViewController = tabBarController
         window?.makeKeyAndVisible()
     }
 
