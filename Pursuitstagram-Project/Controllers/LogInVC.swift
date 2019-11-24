@@ -61,7 +61,7 @@ class LogInVC: UIViewController {
         super.viewDidLoad()
         setUpVCView()
         addSubViews()
-        constrainAppNameLabel()
+        constrainHeaderLabel()
         constrainEmailTF()
         constrainPasswordTF()
         constrainLogInButton()
@@ -82,7 +82,7 @@ class LogInVC: UIViewController {
     }
     
     // MARK: - Constraint Methods
-    private func constrainAppNameLabel() {
+    private func constrainHeaderLabel() {
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
         
         [headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 45), headerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor), headerLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor), headerLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.2)].forEach({$0.isActive = true})
