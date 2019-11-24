@@ -11,7 +11,7 @@ import UIKit
 class ImageUploadVC: UIViewController {
     
     // MARK: - UI Objects
-    lazy var titleVCLabel: UILabel = {
+    lazy var headerLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemPink
         label.font = UIFont(name: "Futura-CondensedExtraBold", size: 44)
@@ -47,7 +47,7 @@ class ImageUploadVC: UIViewController {
     
     // MARK: - Private Methods
     private func addSubViews() {
-        view.addSubview(titleVCLabel)
+        view.addSubview(headerLabel)
         view.addSubview(image)
         view.addSubview(uploadButton)
     }
@@ -58,9 +58,9 @@ class ImageUploadVC: UIViewController {
     
     // MARK: - Constraint Methods
     private func constrainTitleLabel() {
-        titleVCLabel.translatesAutoresizingMaskIntoConstraints = false
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [titleVCLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 45), titleVCLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor), titleVCLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor), titleVCLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.2)].forEach({$0.isActive = true})
+        [headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 45), headerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor), headerLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor), headerLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.2)].forEach({$0.isActive = true})
     }
     
     private func constrainImage() {
