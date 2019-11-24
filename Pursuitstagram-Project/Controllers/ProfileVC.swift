@@ -9,22 +9,118 @@
 import UIKit
 
 class ProfileVC: UIViewController {
+    
+    // MARK: - UI Objects
+    lazy var headerLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .systemPink
+        label.font = UIFont(name: "Futura-CondensedExtraBold", size: 44)
+        label.text = "Profile"
+        label.textAlignment = .center
+        return label
+    }()
+    
+    lazy var userProfileImage: UIImageView = {
+       let img = UIImageView()
+        img.backgroundColor = .darkGray
+        return img
+    }()
+    
+    lazy var imagePickerButton: UIButton = {
+       let button = UIButton()
+        button.setBackgroundImage(.add, for: .normal)
+        return button
+    }()
+    
+    lazy var displayNameLabel: UILabel = {
+       let label = UILabel()
+        label.text = "Display Name"
+        label.font = UIFont(name: "Futura-CondensedExtraBold", size: 24)
+        label.textAlignment = .center
+        label.textColor = .systemPink
+        return label
+    }()
+    
+    lazy var editButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Edit", for: .normal)
+        button.backgroundColor = .systemPink
+        button.setTitleColor(.black, for: .normal)
+        button.layer.cornerRadius = 8
+        return button
+    }()
+    
+    lazy var emailLabel: UILabel = {
+       let label = UILabel()
+        label.font = UIFont(name: "Futura-CondensedExtraBold", size: 18)
+        label.text = "youremail@email.com"
+        label.textAlignment = .center
+        label.textColor = .systemPink
+        return label
+    }()
 
+    // MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        addSubViews()
+        setUpVCView()
+        constrainHeaderLabel()
+        constrainImageView()
+        constrainImgPickerButton()
+        constrainDisplayNameLabel()
+        constrainEditButton()
+        constrainEmailLabel()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Private Methods
+    private func addSubViews() {
+        view.addSubview(headerLabel)
+        view.addSubview(userProfileImage)
+        view.addSubview(imagePickerButton)
+        view.addSubview(displayNameLabel)
+        view.addSubview(editButton)
+        view.addSubview(emailLabel)
     }
-    */
+    
+    private func setUpVCView() {
+        view.backgroundColor = .black
+    }
+    
+    // MARK: - Constraint Methods
+    private func constrainHeaderLabel() {
+        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        [headerLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 45), headerLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor), headerLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor), headerLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.2)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainImageView() {
+        userProfileImage.translatesAutoresizingMaskIntoConstraints = false
+        
+        [userProfileImage.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.33), userProfileImage.widthAnchor.constraint(equalTo: userProfileImage.heightAnchor), userProfileImage.centerXAnchor.constraint(equalTo: view.centerXAnchor), userProfileImage.bottomAnchor.constraint(equalTo: view.centerYAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainImgPickerButton() {
+        imagePickerButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        [imagePickerButton.topAnchor.constraint(equalTo: userProfileImage.topAnchor), imagePickerButton.trailingAnchor.constraint(equalTo: userProfileImage.trailingAnchor), imagePickerButton.heightAnchor.constraint(equalTo: userProfileImage.heightAnchor, multiplier: 0.2), imagePickerButton.widthAnchor.constraint(equalTo: imagePickerButton.heightAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainDisplayNameLabel() {
+        displayNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        [displayNameLabel.topAnchor.constraint(equalTo: userProfileImage.bottomAnchor, constant: 25), displayNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor), displayNameLabel.widthAnchor.constraint(equalTo: userProfileImage.widthAnchor), displayNameLabel.heightAnchor.constraint(equalTo: userProfileImage.heightAnchor, multiplier: 0.15)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainEditButton() {
+        editButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        [editButton.topAnchor.constraint(equalTo: displayNameLabel.bottomAnchor, constant: 7), editButton.centerXAnchor.constraint(equalTo: view.centerXAnchor), editButton.widthAnchor.constraint(equalTo: displayNameLabel.widthAnchor, multiplier: 0.2), editButton.heightAnchor.constraint(equalTo: displayNameLabel.heightAnchor, multiplier: 0.5)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainEmailLabel() {
+        emailLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        [emailLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor), emailLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor), emailLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor), emailLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.15)].forEach({$0.isActive = true})
+    }
 
 }
