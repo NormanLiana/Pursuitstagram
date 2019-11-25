@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class ProfileVC: UIViewController {
     
@@ -29,6 +30,7 @@ class ProfileVC: UIViewController {
     lazy var imagePickerButton: UIButton = {
        let button = UIButton()
         button.setBackgroundImage(.add, for: .normal)
+        button.addTarget(self, action: #selector(addImagePressed), for: .touchUpInside)
         return button
     }()
     
@@ -76,6 +78,28 @@ class ProfileVC: UIViewController {
         constrainEmailLabel()
     }
     
+    // MARK: - ObjC methods
+    @objc private func addImagePressed() {
+        //MARK: TODO - action sheet with multiple media options
+        switch PHPhotoLibrary.authorizationStatus() {
+        case .notDetermined, .denied, .restricted:
+            PHPhotoLibrary.requestAuthorization({[weak self] status in
+                switch status {
+                case .authorized:
+                    self?.presentImagePickerController()
+                case .denied:
+                    //MARK: TODO - set up more intuitive UI interaction
+                    print("Denied photo library permissions")
+                default:
+                    //MARK: TODO - set up more intuitive UI interaction
+                    print("No usable status")
+                }
+            })
+        default:
+            presentImagePickerController()
+        }
+    }
+    
     // MARK: - Private Methods
     private func addSubViews() {
         view.addSubview(headerLabel)
@@ -88,6 +112,17 @@ class ProfileVC: UIViewController {
     
     private func setUpVCView() {
         view.backgroundColor = .black
+    }
+    
+    private func presentImagePickerController() {
+        DispatchQueue.main.async{
+            let imagePickerViewController = UIImagePickerController()
+            imagePickerViewController.delegate = self
+            imagePickerViewController.sourceType = .photoLibrary
+            imagePickerViewController.allowsEditing = true
+            imagePickerViewController.mediaTypes = ["public.image"]
+            self.present(imagePickerViewController, animated: true, completion: nil)
+        }
     }
     
     // MARK: - Constraint Methods
@@ -127,4 +162,8 @@ class ProfileVC: UIViewController {
         [emailLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor), emailLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor), emailLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor), emailLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.15)].forEach({$0.isActive = true})
     }
 
+}
+
+extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
 }
