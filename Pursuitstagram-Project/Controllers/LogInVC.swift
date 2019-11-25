@@ -53,6 +53,7 @@ class LogInVC: UIViewController {
         button.backgroundColor = .systemPink
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 10
+        button.addTarget(self, action: #selector(showCreateAccountVC), for: .touchUpInside)
         return button
     }()
 
@@ -66,6 +67,13 @@ class LogInVC: UIViewController {
         constrainPasswordTF()
         constrainLogInButton()
         constrainCreateAccountButton()
+    }
+    
+    // MARK: - ObjC Methods
+    @objc func showCreateAccountVC() {
+        let createAccountVC = CreateAccountVC()
+        createAccountVC.modalPresentationStyle = .formSheet
+        present(createAccountVC, animated: true, completion: nil)
     }
     
     // MARK: Private Methods
