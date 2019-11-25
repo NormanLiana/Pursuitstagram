@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class CreateAccountVC: UIViewController {
     
     // MARK: - UI Objects
     lazy var headerLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .systemPink
+        label.textColor = #colorLiteral(red: 0.6871127486, green: 0.2351325154, blue: 0.2614696622, alpha: 1)
         label.font = UIFont(name: "Futura-CondensedExtraBold", size: 44)
         label.text = "Create Your Account"
         label.textAlignment = .center
@@ -26,6 +27,7 @@ class CreateAccountVC: UIViewController {
         tf.textColor = .black
         tf.placeholder = "Email address"
         tf.borderStyle = .roundedRect
+        tf.addTarget(self, action: #selector(validateFields), for: .editingChanged)
         return tf
     }()
     
@@ -35,15 +37,17 @@ class CreateAccountVC: UIViewController {
         tf.textColor = .black
         tf.placeholder = "Password"
         tf.borderStyle = .roundedRect
+        tf.addTarget(self, action: #selector(validateFields), for: .editingChanged)
         return tf
     }()
     
     lazy var createAccountButton: UIButton = {
         let button = UIButton()
         button.setTitle("Create Account", for: .normal)
-        button.backgroundColor = .systemPink
+        button.backgroundColor = #colorLiteral(red: 0.9571240544, green: 0.598136723, blue: 0.6646113396, alpha: 1)
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 8
+        button.addTarget(self, action: #selector(attemptSignUp), for: .touchUpInside)
         return button
     }()
 
@@ -73,6 +77,67 @@ class CreateAccountVC: UIViewController {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alertVC, animated: true, completion: nil)
+    }
+    
+    private func handleCreateAccountResponse(with result: Result<User, Error>) {
+        DispatchQueue.main.async { [weak self] in
+            switch result {
+            case.success(let user):
+            print(user)
+                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                    let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
+                    else {
+                        //MARK: TODO - handle could not swap root view controller
+                        return
+                }
+                
+                if FirebaseAuthService.manager.currentUser != nil {
+                    UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
+                        window.rootViewController = PursuitstagramTBController()
+                    }, completion: nil)
+                    
+                } else {
+                    print("No current user")
+                }
+                
+                
+            case .failure(let error):
+                self?.showAlert(with: "Error Creating User", and: error.localizedDescription)
+            }
+             
+        }
+    }
+    
+    //MARK: - ObjC Methods
+    @objc func validateFields() {
+        guard emailTF.hasText, passwordTF.hasText else {
+            createAccountButton.backgroundColor = #colorLiteral(red: 0.6871127486, green: 0.2351325154, blue: 0.2614696622, alpha: 1)
+            createAccountButton.isEnabled = false
+            return
+        }
+        createAccountButton.isEnabled = true
+        createAccountButton.backgroundColor = #colorLiteral(red: 0.9571240544, green: 0.598136723, blue: 0.6646113396, alpha: 1)
+    }
+    
+    @objc func attemptSignUp() {
+        guard let email = emailTF.text, let password = passwordTF.text else {
+            showAlert(with: "Error", and: "Please fill out all fields.")
+            return
+        }
+        
+        guard email.isValidEmail else {
+            showAlert(with: "Error", and: "Please enter a valid email")
+            return
+        }
+        
+        guard password.isValidPassword else {
+            showAlert(with: "Error", and: "Please enter a valid password. Passwords must have at least 8 characters.")
+            return
+        }
+        
+        FirebaseAuthService.manager.createNewUser(email: email.lowercased(), password: password) { [weak self] (result) in
+            self?.handleCreateAccountResponse(with: result)
+        }
     }
     
     // MARK: - Constraint Methods
