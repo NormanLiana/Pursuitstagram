@@ -34,6 +34,9 @@ class ImageDVC: UIViewController {
         label.textColor = .systemPink
         return label
     }()
+    
+    // MARK: - Properties
+    var selectedPost: Post!
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -54,6 +57,7 @@ class ImageDVC: UIViewController {
     
     private func setUpVCView() {
         view.backgroundColor = .black
+        navigationController?.isNavigationBarHidden = false
     }
     
     // MARK: - Constraint Methods

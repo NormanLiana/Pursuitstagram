@@ -28,6 +28,14 @@ class FeedVC: UIViewController {
         cv.register(FeedCVCell.self, forCellWithReuseIdentifier: "feedCVCell")
         return cv
     }()
+    
+    lazy var uploadPostButton: UIBarButtonItem = {
+        let barButton = UIBarButtonItem(title: "Post", style: UIBarButtonItem.Style.plain , target: self, action: #selector(segueToImageUploadVC))
+        return barButton
+    }()
+    
+    // MARK: - Properties
+    var posts = [Post]()
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -39,6 +47,13 @@ class FeedVC: UIViewController {
         constrainFeedCV()
     }
     
+    // MARK: ObjC Methods
+    @objc func segueToImageUploadVC() {
+        let imgUploadVC = ImageUploadVC()
+        navigationController?.pushViewController(imgUploadVC, animated: true)
+    }
+    
+    // MARK: - Private Methods
     private func addSubViews() {
         view.addSubview(headerLabel)
         view.addSubview(feedCV)
@@ -46,7 +61,7 @@ class FeedVC: UIViewController {
     
     private func setUpVCView() {
         view.backgroundColor = .black
-        navigationController?.isNavigationBarHidden = true
+        navigationItem.rightBarButtonItem = uploadPostButton
     }
     
     private func delegation() {
@@ -92,4 +107,11 @@ extension FeedVC: UICollectionViewDelegateFlowLayout {
     }
 }
 
-extension FeedVC: UICollectionViewDelegate {}
+extension FeedVC: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let post = posts[indexPath.row]
+        let postDVC = ImageDVC()
+//        postDVC.selectedPost = post
+        navigationController?.pushViewController(postDVC, animated: true)
+    }
+}
