@@ -58,6 +58,10 @@ class ProfileVC: UIViewController {
         label.textColor = .systemPink
         return label
     }()
+    
+    // MARK: - Properties
+    var user: AppUser!
+    var isCurrentUser = false
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {

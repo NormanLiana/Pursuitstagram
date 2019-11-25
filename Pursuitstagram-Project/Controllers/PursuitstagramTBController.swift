@@ -10,21 +10,19 @@ import UIKit
 
 class PursuitstagramTBController: UITabBarController {
 
+    lazy var feedVC = UINavigationController(rootViewController: FeedVC())
+    
+    lazy var profileVC: UINavigationController = {
+        let userProfileVC = ProfileVC()
+        userProfileVC.user = AppUser(from: FirebaseAuthService.manager.currentUser!)
+        userProfileVC.isCurrentUser = true
+        return UINavigationController(rootViewController: userProfileVC)
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        feedVC.tabBarItem = UITabBarItem(title: "Posts", image: UIImage(systemName: "list.dash"), tag: 0)
+        profileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.crop.square"), tag: 1)
+        self.viewControllers = [feedVC, profileVC]
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }
