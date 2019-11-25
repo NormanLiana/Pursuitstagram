@@ -69,6 +69,12 @@ class CreateAccountVC: UIViewController {
         view.backgroundColor = .black
     }
     
+    private func showAlert(with title: String, and message: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        present(alertVC, animated: true, completion: nil)
+    }
+    
     // MARK: - Constraint Methods
     private func constrainHeaderLabel() {
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
