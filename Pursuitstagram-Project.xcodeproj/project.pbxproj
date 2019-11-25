@@ -154,8 +154,7 @@
 		A547855F2388B9AA00FB3306 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A54785612388BDD800FB3306 /* LogInVC.swift */,
-				A54785632388D9F300FB3306 /* CreateAccountVC.swift */,
+				A5478585238C37F500FB3306 /* Authentication */,
 				A54785652388DA7700FB3306 /* ProfileVC.swift */,
 				A54785672388DB0400FB3306 /* FeedVC.swift */,
 				A54785692388DB6100FB3306 /* ImageUploadVC.swift */,
@@ -207,6 +206,15 @@
 				A547857D238B5A5200FB3306 /* Post.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		A5478585238C37F500FB3306 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				A54785612388BDD800FB3306 /* LogInVC.swift */,
+				A54785632388D9F300FB3306 /* CreateAccountVC.swift */,
+			);
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		E1E7686F7B04F6FE0136D1D2 /* Frameworks */ = {
