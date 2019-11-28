@@ -61,6 +61,11 @@ class ProfileVC: UIViewController {
         return label
     }()
     
+    lazy var logOutButton: UIBarButtonItem = {
+        let barButton = UIBarButtonItem(title: "Log Out", style: UIBarButtonItem.Style.plain , target: self, action: #selector(signOutUser))
+        return barButton
+    }()
+    
     // MARK: - Properties
     var user: AppUser!
     var isCurrentUser = false
@@ -100,6 +105,12 @@ class ProfileVC: UIViewController {
         }
     }
     
+    @objc func signOutUser() {
+        FirebaseAuthService.manager.signOutUser()
+        
+        
+    }
+    
     // MARK: - Private Methods
     private func addSubViews() {
         view.addSubview(headerLabel)
@@ -112,6 +123,7 @@ class ProfileVC: UIViewController {
     
     private func setUpVCView() {
         view.backgroundColor = .black
+        navigationItem.rightBarButtonItem = logOutButton
     }
     
     private func presentImagePickerController() {
