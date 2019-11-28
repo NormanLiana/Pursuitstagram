@@ -8,6 +8,7 @@ target 'Pursuitstagram-Project' do
   # Pods for Pursuitstagram-Project
 	pod 'Firebase/Auth'
 	pod 'Firebase/Firestore'
+	pod 'Firebase/Storage'
 
   target 'Pursuitstagram-ProjectTests' do
     inherit! :search_paths
