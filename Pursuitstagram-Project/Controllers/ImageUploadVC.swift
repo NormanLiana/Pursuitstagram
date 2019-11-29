@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Photos
 
 class ImageUploadVC: UIViewController {
     
@@ -26,6 +27,13 @@ class ImageUploadVC: UIViewController {
         return img
     }()
     
+    lazy var imagePickerButton: UIButton = {
+       let button = UIButton()
+        button.setBackgroundImage(.add, for: .normal)
+        button.addTarget(self, action: #selector(addImagePressed), for: .touchUpInside)
+        return button
+    }()
+    
     lazy var uploadButton: UIButton = {
         let button = UIButton()
         button.setTitle("Upload", for: .normal)
@@ -34,6 +42,8 @@ class ImageUploadVC: UIViewController {
         button.layer.cornerRadius = 8
         return button
     }()
+    
+    private var imageURL: URL? = nil
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -42,7 +52,29 @@ class ImageUploadVC: UIViewController {
         setUpVCView()
         constrainTitleLabel()
         constrainImage()
+        constrainImgPickerButton()
         constrainUploadButton()
+    }
+    
+    // MARK: - ObjC Methods
+    @objc private func addImagePressed() {
+        switch PHPhotoLibrary.authorizationStatus() {
+        case .notDetermined, .denied, .restricted:
+            PHPhotoLibrary.requestAuthorization({[weak self] status in
+                switch status {
+                case .authorized:
+                    self?.presentImagePickerController()
+                case .denied:
+                    //MARK: TODO - set up more intuitive UI interaction
+                    print("Denied photo library permissions")
+                default:
+                    //MARK: TODO - set up more intuitive UI interaction
+                    print("No usable status")
+                }
+            })
+        default:
+            presentImagePickerController()
+        }
     }
     
     // MARK: - Private Methods
@@ -50,10 +82,22 @@ class ImageUploadVC: UIViewController {
         view.addSubview(headerLabel)
         view.addSubview(imageToUpload)
         view.addSubview(uploadButton)
+        view.addSubview(imagePickerButton)
     }
     
     private func setUpVCView() {
         view.backgroundColor = .black
+    }
+    
+    private func presentImagePickerController() {
+        DispatchQueue.main.async{
+            let imagePickerViewController = UIImagePickerController()
+            imagePickerViewController.delegate = self
+            imagePickerViewController.sourceType = .photoLibrary
+            imagePickerViewController.allowsEditing = true
+            imagePickerViewController.mediaTypes = ["public.image"]
+            self.present(imagePickerViewController, animated: true, completion: nil)
+        }
     }
     
     // MARK: - Constraint Methods
@@ -69,6 +113,13 @@ class ImageUploadVC: UIViewController {
         [imageToUpload.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor), imageToUpload.centerXAnchor.constraint(equalTo: view.centerXAnchor), imageToUpload.widthAnchor.constraint(equalTo: imageToUpload.heightAnchor), imageToUpload.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.33)].forEach({$0.isActive = true})
     }
     
+    private func constrainImgPickerButton() {
+        imagePickerButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        [imagePickerButton.topAnchor.constraint(equalTo: imageToUpload.topAnchor), imagePickerButton.trailingAnchor.constraint(equalTo: imageToUpload.trailingAnchor), imagePickerButton.heightAnchor.constraint(equalTo: imageToUpload.heightAnchor, multiplier: 0.1), imagePickerButton.widthAnchor.constraint(equalTo: imagePickerButton.heightAnchor)].forEach({$0.isActive = true})
+    }
+
+    
     private func constrainUploadButton() {
         uploadButton.translatesAutoresizingMaskIntoConstraints = false
 
@@ -76,4 +127,28 @@ class ImageUploadVC: UIViewController {
     }
 
 
+}
+
+
+extension ImageUploadVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[.editedImage] as? UIImage else {
+            return
+        }
+        self.imageToUpload.image = image
+        
+        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+            return
+        }
+        
+        FirebaseStorageService.manager.storeImage(image: imageData, completion: { [weak self] (result) in
+            switch result{
+            case .success(let url):
+                self?.imageURL = url
+            case .failure(let error):
+                print(error)
+            }
+        })
+        dismiss(animated: true, completion: nil)
+    }
 }
