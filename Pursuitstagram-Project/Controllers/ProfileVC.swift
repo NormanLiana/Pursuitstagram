@@ -43,12 +43,22 @@ class ProfileVC: UIViewController {
         return label
     }()
     
-    lazy var editButton: UIButton = {
+    lazy var displayNameTF: UITextField = {
+       let tf = UITextField()
+        tf.backgroundColor = .white
+        tf.textColor = .black
+        tf.placeholder = "Update display name"
+        tf.borderStyle = .roundedRect
+        return tf
+    }()
+    
+    lazy var saveButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Edit", for: .normal)
+        button.setTitle("Save", for: .normal)
         button.backgroundColor = .systemPink
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 8
+        button.addTarget(self, action: #selector(savePressed), for: .touchUpInside)
         return button
     }()
     
@@ -69,6 +79,7 @@ class ProfileVC: UIViewController {
     // MARK: - Properties
     var user: AppUser!
     var isCurrentUser = false
+    var imageURL: URL? = nil
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -79,13 +90,13 @@ class ProfileVC: UIViewController {
         constrainImageView()
         constrainImgPickerButton()
         constrainDisplayNameLabel()
-        constrainEditButton()
+        constrainDisplayNameTF()
+        constrainSaveButton()
         constrainEmailLabel()
     }
     
     // MARK: - ObjC methods
     @objc private func addImagePressed() {
-        //MARK: TODO - action sheet with multiple media options
         switch PHPhotoLibrary.authorizationStatus() {
         case .notDetermined, .denied, .restricted:
             PHPhotoLibrary.requestAuthorization({[weak self] status in
@@ -105,10 +116,37 @@ class ProfileVC: UIViewController {
         }
     }
     
+    @objc func savePressed(){
+        guard let userName = displayNameTF.text, let imageURL = imageURL else {
+            return
+        }
+        
+        FirebaseAuthService.manager.updateUserProfile(userName: userName, photoURL: imageURL) { (resultForFIRAuth) in
+            switch resultForFIRAuth {
+            case .success():
+                FirestoreService.manager.updateCurrentUser(userName: userName, photoURL: imageURL) { [weak self] (resultForFIRService) in
+                    switch resultForFIRService {
+                    case .success():
+                        self?.displayNameLabel.text = userName
+                        print("We saved their info")
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    
+    
+    @objc func uploadButtonPressed() {
+        
+    }
+    
     @objc func signOutUser() {
         FirebaseAuthService.manager.signOutUser()
-        
-        
     }
     
     // MARK: - Private Methods
@@ -117,7 +155,8 @@ class ProfileVC: UIViewController {
         view.addSubview(userProfileImage)
         view.addSubview(imagePickerButton)
         view.addSubview(displayNameLabel)
-        view.addSubview(editButton)
+        view.addSubview(displayNameTF)
+        view.addSubview(saveButton)
         view.addSubview(emailLabel)
     }
     
@@ -162,10 +201,16 @@ class ProfileVC: UIViewController {
         [displayNameLabel.topAnchor.constraint(equalTo: userProfileImage.bottomAnchor, constant: 25), displayNameLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor), displayNameLabel.widthAnchor.constraint(equalTo: userProfileImage.widthAnchor), displayNameLabel.heightAnchor.constraint(equalTo: userProfileImage.heightAnchor, multiplier: 0.15)].forEach({$0.isActive = true})
     }
     
-    private func constrainEditButton() {
-        editButton.translatesAutoresizingMaskIntoConstraints = false
+    private func constrainDisplayNameTF() {
+        displayNameTF.translatesAutoresizingMaskIntoConstraints = false
         
-        [editButton.topAnchor.constraint(equalTo: displayNameLabel.bottomAnchor, constant: 7), editButton.centerXAnchor.constraint(equalTo: view.centerXAnchor), editButton.widthAnchor.constraint(equalTo: displayNameLabel.widthAnchor, multiplier: 0.2), editButton.heightAnchor.constraint(equalTo: displayNameLabel.heightAnchor, multiplier: 0.5)].forEach({$0.isActive = true})
+        [displayNameTF.topAnchor.constraint(equalTo: displayNameLabel.bottomAnchor), displayNameTF.widthAnchor.constraint(equalTo: displayNameLabel.widthAnchor), displayNameTF.heightAnchor.constraint(equalTo: displayNameLabel.heightAnchor), displayNameTF.centerXAnchor.constraint(equalTo: view.centerXAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainSaveButton() {
+        saveButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        [saveButton.topAnchor.constraint(equalTo: displayNameTF.bottomAnchor, constant: 7), saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor), saveButton.widthAnchor.constraint(equalTo: displayNameTF.widthAnchor, multiplier: 0.2), saveButton.heightAnchor.constraint(equalTo: displayNameTF.heightAnchor, multiplier: 0.5)].forEach({$0.isActive = true})
     }
     
     private func constrainEmailLabel() {
@@ -177,5 +222,26 @@ class ProfileVC: UIViewController {
 }
 
 extension ProfileVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            guard let image = info[.editedImage] as? UIImage else {
+                return
+            }
+        self.userProfileImage.image = image
+            
+            guard let imageData = image.jpegData(compressionQuality: 0.8) else {
+                return
+            }
+            
+            FirebaseStorageService.manager.storeImage(image: imageData, completion: { [weak self] (result) in
+                switch result{
+                case .success(let url):
+                    self?.imageURL = url
+                case .failure(let error):
+                    print(error)
+                }
+            })
+            dismiss(animated: true, completion: nil)
+        }
     
 }
