@@ -73,38 +73,44 @@ class CreateAccountVC: UIViewController {
         view.backgroundColor = .black
     }
     
+    private func handleCreateAccountResponse(with result: Result<User, Error>) {
+        DispatchQueue.main.async { [weak self] in
+            switch result {
+            case .success(let user):
+                FirestoreService.manager.createAppUser(user: AppUser(from: user)) { [weak self] newResult in
+                    self?.handleCreatedUserInFirestore(result: newResult)
+                }
+            case .failure(let error):
+                print(error)
+                self?.showAlert(with: "Error creating user", and: "An error occured while creating new account \(error)")
+            }
+        }
+    }
+    
     private func showAlert(with title: String, and message: String) {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alertVC, animated: true, completion: nil)
     }
     
-    private func handleCreateAccountResponse(with result: Result<User, Error>) {
-        DispatchQueue.main.async { [weak self] in
-            switch result {
-            case.success(let user):
-            print(user)
-                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-                    let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
-                    else {
-                        //MARK: TODO - handle could not swap root view controller
-                        return
-                }
-                
-                if FirebaseAuthService.manager.currentUser != nil {
-                    UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
-                        window.rootViewController = PursuitstagramTBController()
-                    }, completion: nil)
-                    
-                } else {
-                    print("No current user")
-                }
-                
-                
-            case .failure(let error):
-                self?.showAlert(with: "Error Creating User", and: error.localizedDescription)
+    private func handleCreatedUserInFirestore(result: Result<(), Error>) {
+        switch result {
+        case .success:
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
+                else {
+                    return
             }
-             
+            
+            UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
+                if FirebaseAuthService.manager.currentUser?.photoURL != nil {
+                    window.rootViewController = PursuitstagramTBController()
+                } else {
+                    window.rootViewController = ProfileVC()
+                }
+            }, completion: nil)
+        case .failure(let error):
+            self.showAlert(with: "Error creating user", and: "An error occured while creating new account \(error)")
         }
     }
     
