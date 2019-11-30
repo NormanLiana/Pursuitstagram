@@ -24,6 +24,8 @@ class ImageUploadVC: UIViewController {
     lazy var imageToUpload: UIImageView = {
        let img = UIImageView()
         img.backgroundColor = .white
+        img.image = self.currentImage
+        img.contentMode = .scaleAspectFit
         return img
     }()
     
@@ -40,9 +42,15 @@ class ImageUploadVC: UIViewController {
         button.backgroundColor = .systemPink
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 8
+        button.addTarget(self, action: #selector(uploadButtonPressed), for: .touchUpInside)
         return button
     }()
     
+    var currentImage = UIImage(systemName: "photo") {
+        didSet {
+            imageToUpload.image = currentImage
+        }
+    }
     private var imageURL: URL? = nil
 
     // MARK: - Lifecycle Methods
@@ -77,6 +85,12 @@ class ImageUploadVC: UIViewController {
         }
     }
     
+    @objc func uploadButtonPressed() {
+        createPostInFIRStore()
+        storeImageInFIRStorage()
+        
+    }
+    
     // MARK: - Private Methods
     private func addSubViews() {
         view.addSubview(headerLabel)
@@ -104,6 +118,49 @@ class ImageUploadVC: UIViewController {
         let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
         present(alertVC, animated: true, completion: nil)
+    }
+    
+    private func createPostInFIRStore() {
+
+        guard let photoURL = self.imageURL,
+        let user = FirebaseAuthService.manager.currentUser else {return}
+        
+        let photoURLString = "\(photoURL)"
+        
+        let newPost = Post(photoURL: photoURLString, creatorID: user.uid)
+        FirestoreService.manager.createPost(post: newPost) { (result) in
+            switch result {
+            case .failure(let error):
+                print("We DIDN'T post!")
+                print(error)
+            case .success(()):
+                self.showAlert(with: "Posted!", and: "Yay!")
+
+            }
+        }
+        
+    }
+    
+    private func storeImageInFIRStorage() {
+        guard let image = self.currentImage else {
+            return
+        }
+
+        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+            return
+        }
+        
+        FirebaseStorageService.manager.storeImage(image: imageData, completion: { [weak self] (result) in
+            switch result{
+            case .success(let url):
+                self?.imageURL = url
+                print("We stored the image!")
+            case .failure(let error):
+                print("We DIDN'T store the image!")
+                print(error)
+            }
+        })
+//        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - Constraint Methods
@@ -141,7 +198,7 @@ extension ImageUploadVC: UIImagePickerControllerDelegate, UINavigationController
         guard let image = info[.editedImage] as? UIImage else {
             return
         }
-        self.imageToUpload.image = image
+        self.currentImage = image
         
         guard let imageData = image.jpegData(compressionQuality: 1.0) else {
             return
