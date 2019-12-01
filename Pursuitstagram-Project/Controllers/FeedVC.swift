@@ -140,9 +140,9 @@ extension FeedVC: UICollectionViewDelegateFlowLayout {
 
 extension FeedVC: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let post = posts[indexPath.row]
+        let post = posts[indexPath.row]
         let postDVC = ImageDVC()
-//        postDVC.selectedPost = post
+        postDVC.selectedPost = post
         navigationController?.pushViewController(postDVC, animated: true)
     }
 }
