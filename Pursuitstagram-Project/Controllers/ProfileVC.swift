@@ -37,8 +37,6 @@ class ProfileVC: UIViewController {
     
     lazy var displayNameLabel: UILabel = {
        let label = UILabel()
-//        label.text = "\(userFIR?.displayName?.description ?? "No Username")"
-        label.text = "\(user.userName ?? "No Username")"
         label.font = UIFont(name: "Futura-CondensedExtraBold", size: 24)
         label.textAlignment = .center
         label.textColor = .systemPink
