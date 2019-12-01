@@ -129,14 +129,17 @@ class ImageUploadVC: UIViewController {
         
         let newPost = Post(photoURL: photoURLString, creatorID: user.uid)
         FirestoreService.manager.createPost(post: newPost) { (result) in
-            switch result {
-            case .failure(let error):
-                print("We DIDN'T post!")
-                print(error)
-            case .success(()):
-                self.showAlert(with: "Posted!", and: "Yay!")
+            DispatchQueue.main.async {
+                switch result {
+                case .failure(let error):
+                    print("We DIDN'T post!")
+                    print(error)
+                case .success(()):
+                    self.showAlert(with: "Successfully", and: "Posted!")
 
+                }
             }
+            
         }
         
     }
@@ -151,14 +154,17 @@ class ImageUploadVC: UIViewController {
         }
         
         FirebaseStorageService.manager.storeImage(image: imageData, completion: { [weak self] (result) in
-            switch result{
-            case .success(let url):
-                self?.imageURL = url
-                print("We stored the image!")
-            case .failure(let error):
-                print("We DIDN'T store the image!")
-                print(error)
+            DispatchQueue.main.async {
+                switch result{
+                case .success(let url):
+                    self?.imageURL = url
+                    print("We stored the image!")
+                case .failure(let error):
+                    print("We DIDN'T store the image!")
+                    print(error)
+                }
             }
+            
         })
 //        dismiss(animated: true, completion: nil)
     }
