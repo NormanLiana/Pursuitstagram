@@ -88,7 +88,7 @@ class ImageUploadVC: UIViewController {
     @objc func uploadButtonPressed() {
         createPostInFIRStore()
         storeImageInFIRStorage()
-        
+        navigationController?.popViewController(animated: true)
     }
     
     // MARK: - Private Methods
