@@ -202,6 +202,24 @@ class ProfileVC: UIViewController {
         }
     }
     
+    private func getUserProfileImage() {
+        if let userPhotoURL = user.photoURL {
+            
+            ImageHelper.shared.getImage(urlStr: userPhotoURL) { [weak self] (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let imageFromFIR):
+                        self?.userProfileImage.image = imageFromFIR
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            }
+        } else {
+            userProfileImage.image = UIImage(systemName: "person")
+        }
+    }
+    
     // MARK: - Constraint Methods
     private func constrainHeaderLabel() {
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
