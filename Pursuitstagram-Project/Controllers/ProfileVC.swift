@@ -97,16 +97,7 @@ class ProfileVC: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        ImageHelper.shared.getImage(urlStr: user.photoURL ?? "") { [weak self] (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let imageFromFIR):
-                    self?.userProfileImage.image = imageFromFIR
-                case .failure(let error):
-                    print(error)
-                }
-            }
-        }
+        getUserProfileImage()
     }
     
     // MARK: - ObjC methods
