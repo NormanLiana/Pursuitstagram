@@ -146,11 +146,6 @@ class ProfileVC: UIViewController {
     }
     
     
-    
-    @objc func uploadButtonPressed() {
-        
-    }
-    
     @objc func signOutUser() {
         FirebaseAuthService.manager.signOutUser()
         
