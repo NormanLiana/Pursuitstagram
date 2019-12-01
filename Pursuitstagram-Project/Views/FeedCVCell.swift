@@ -19,7 +19,6 @@ class FeedCVCell: UICollectionViewCell {
     
     lazy var postedByLabel: UILabel = {
        let label = UILabel()
-        label.text = "Submitted By:"
         label.font = UIFont(name: "Futura-CondensedExtraBold", size: 18)
         label.backgroundColor = .clear
         label.textAlignment = .center
