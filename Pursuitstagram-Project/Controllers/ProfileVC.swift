@@ -36,7 +36,7 @@ class ProfileVC: UIViewController {
     
     lazy var displayNameLabel: UILabel = {
        let label = UILabel()
-        label.text = "Display Name"
+        label.text = "\(userFIR?.displayName?.description ?? "No Username")"
         label.font = UIFont(name: "Futura-CondensedExtraBold", size: 24)
         label.textAlignment = .center
         label.textColor = .systemPink
@@ -65,7 +65,7 @@ class ProfileVC: UIViewController {
     lazy var emailLabel: UILabel = {
        let label = UILabel()
         label.font = UIFont(name: "Futura-CondensedExtraBold", size: 18)
-        label.text = "youremail@email.com"
+        label.text = "\(userFIR?.email ?? "youremail@email.com")"
         label.textAlignment = .center
         label.textColor = .systemPink
         return label
@@ -80,6 +80,7 @@ class ProfileVC: UIViewController {
     var user: AppUser!
     var isCurrentUser = false
     var imageURL: URL? = nil
+    let userFIR = FirebaseAuthService.manager.currentUser
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -93,6 +94,19 @@ class ProfileVC: UIViewController {
         constrainDisplayNameTF()
         constrainSaveButton()
         constrainEmailLabel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        ImageHelper.shared.getImage(urlStr: user.photoURL ?? "") { [weak self] (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let imageFromFIR):
+                    self?.userProfileImage.image = imageFromFIR
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
     }
     
     // MARK: - ObjC methods
@@ -128,6 +142,7 @@ class ProfileVC: UIViewController {
                     switch resultForFIRService {
                     case .success():
                         self?.displayNameLabel.text = userName
+                        self?.displayNameTF.text = ""
                         print("We saved their info")
                     case .failure(let error):
                         print(error)
