@@ -98,6 +98,7 @@ class ProfileVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         getUserProfileImage()
+        getUserDisplayName()
     }
     
     // MARK: - ObjC methods
@@ -203,6 +204,12 @@ class ProfileVC: UIViewController {
             }
         } else {
             userProfileImage.image = UIImage(systemName: "person")
+        }
+    }
+    
+    private func getUserDisplayName() {
+        if let userDisplayName = user.userName {
+            displayNameLabel.text = userDisplayName
         }
     }
     
