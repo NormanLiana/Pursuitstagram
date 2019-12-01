@@ -24,6 +24,7 @@ class ProfileVC: UIViewController {
     lazy var userProfileImage: UIImageView = {
        let img = UIImageView()
         img.backgroundColor = .darkGray
+        img.contentMode = .scaleAspectFit
         return img
     }()
     
