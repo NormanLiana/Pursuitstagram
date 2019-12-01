@@ -112,7 +112,6 @@ extension FeedVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = feedCV.dequeueReusableCell(withReuseIdentifier: "feedCVCell", for: indexPath) as? FeedCVCell {
             let post = posts[indexPath.row]
-            cell.postedByLabel.text = "Submitted By: \(post.creatorID)"
             
             ImageHelper.shared.getImage(urlStr: post.photoURL) { (result) in
                 DispatchQueue.main.async {
@@ -122,6 +121,15 @@ extension FeedVC: UICollectionViewDataSource {
                     case .failure(let error):
                         print(error)
                     }
+                }
+            }
+            
+            FirestoreService.manager.getUserFromPost(creatorID: post.creatorID) { (result) in
+                switch result {
+                case .failure(let error):
+                    print(error)
+                case .success(let user):
+                    cell.postedByLabel.text = "Submitted By: \(user.userName ?? "No user name")"
                 }
             }
             return cell
