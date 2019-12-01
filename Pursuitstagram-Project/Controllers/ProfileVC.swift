@@ -190,9 +190,8 @@ class ProfileVC: UIViewController {
     }
     
     private func getUserProfileImage() {
-        if let userPhotoURL = user.photoURL {
-            
-            ImageHelper.shared.getImage(urlStr: userPhotoURL) { [weak self] (result) in
+        if let userPhotoURL = userFIR?.photoURL {
+            ImageHelper.shared.getImage(urlStr: userPhotoURL.description) { [weak self] (result) in
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let imageFromFIR):
