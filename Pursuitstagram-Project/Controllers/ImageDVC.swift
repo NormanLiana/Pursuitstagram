@@ -26,9 +26,9 @@ class ImageDVC: UIViewController {
         return img
     }()
     
-    lazy var submittedByLabel: UILabel = {
+    lazy var postDateLabel: UILabel = {
        let label = UILabel()
-        label.text = "Submitted By:"
+        label.text = "Submitted on: \(selectedPost.dateCreated ?? Date())"
         label.font = UIFont(name: "Futura-CondensedExtraBold", size: 18)
         label.textAlignment = .center
         label.textColor = .systemPink
@@ -45,19 +45,33 @@ class ImageDVC: UIViewController {
         addSubViews()
         constrainHeaderLabel()
         constrainImage()
-        constrainSubmittedBylabel()
+        constrainPostDateLabel()
+        getImage()
     }
     
     // MARK: - Private Methods
     private func addSubViews() {
         view.addSubview(headerLabel)
         view.addSubview(imageForDVC)
-        view.addSubview(submittedByLabel)
+        view.addSubview(postDateLabel)
     }
     
     private func setUpVCView() {
         view.backgroundColor = .black
         navigationController?.isNavigationBarHidden = false
+    }
+    
+    private func getImage() {
+        ImageHelper.shared.getImage(urlStr: selectedPost.photoURL) { [weak self] (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let imageFromFIR):
+                    self?.imageForDVC.image = imageFromFIR
+                case .failure(let error):
+                    print(error)
+                }
+            }
+        }
     }
     
     // MARK: - Constraint Methods
@@ -73,10 +87,10 @@ class ImageDVC: UIViewController {
         [imageForDVC.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor), imageForDVC.leadingAnchor.constraint(equalTo: view.leadingAnchor), imageForDVC.trailingAnchor.constraint(equalTo: view.trailingAnchor), imageForDVC.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.5)].forEach({$0.isActive = true})
     }
     
-    private func constrainSubmittedBylabel() {
-        submittedByLabel.translatesAutoresizingMaskIntoConstraints = false
+    private func constrainPostDateLabel() {
+        postDateLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        [submittedByLabel.topAnchor.constraint(equalTo: imageForDVC.bottomAnchor, constant: 25), submittedByLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor), submittedByLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor), submittedByLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.045)].forEach({$0.isActive = true})
+        [postDateLabel.topAnchor.constraint(equalTo: imageForDVC.bottomAnchor, constant: 25), postDateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor), postDateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor), postDateLabel.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.045)].forEach({$0.isActive = true})
     }
     
 
