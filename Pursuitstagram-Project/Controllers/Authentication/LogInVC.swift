@@ -36,6 +36,7 @@ class LogInVC: UIViewController {
         tf.textColor = .black
         tf.placeholder = "Password"
         tf.borderStyle = .roundedRect
+        tf.isSecureTextEntry = true
         tf.addTarget(self, action: #selector(validateFields), for: .editingChanged)
         return tf
     }()
