@@ -35,7 +35,11 @@ class FeedVC: UIViewController {
     }()
     
     // MARK: - Properties
-    var posts = [Post]()
+    var posts = [Post]() {
+        didSet {
+            feedCV.reloadData()
+        }
+    }
 
     // MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -45,6 +49,10 @@ class FeedVC: UIViewController {
         delegation()
         constrainHeaderLabel()
         constrainFeedCV()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        loadPosts()
     }
     
     // MARK: ObjC Methods
@@ -69,6 +77,17 @@ class FeedVC: UIViewController {
         feedCV.delegate = self
     }
     
+    private func loadPosts() {
+        FirestoreService.manager.getAllPosts(sortingCriteria: .fromNewestToOldest) { [weak self] (result) in
+            switch result {
+            case .success(let postsFromFIRStore):
+                self?.posts = postsFromFIRStore
+            case .failure(let error):
+                print("Error getting posts: \(error)")
+            }
+        }
+    }
+    
     // MARK: - Constraint Methods
     private func constrainHeaderLabel() {
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -87,12 +106,24 @@ class FeedVC: UIViewController {
 
 extension FeedVC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return posts.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = feedCV.dequeueReusableCell(withReuseIdentifier: "feedCVCell", for: indexPath) as? FeedCVCell {
-            cell.backgroundColor = .darkGray
+            let post = posts[indexPath.row]
+            cell.postedByLabel.text = "Submitted By: \(post.creatorID)"
+            
+            ImageHelper.shared.getImage(urlStr: post.photoURL) { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let imageFromFIR):
+                        cell.imageInFeed.image = imageFromFIR
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+            }
             return cell
         }
         return UICollectionViewCell()
