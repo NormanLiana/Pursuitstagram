@@ -36,7 +36,8 @@ class ProfileVC: UIViewController {
     
     lazy var displayNameLabel: UILabel = {
        let label = UILabel()
-        label.text = "\(userFIR?.displayName?.description ?? "No Username")"
+//        label.text = "\(userFIR?.displayName?.description ?? "No Username")"
+        label.text = "\(user.userName ?? "No Username")"
         label.font = UIFont(name: "Futura-CondensedExtraBold", size: 24)
         label.textAlignment = .center
         label.textColor = .systemPink
@@ -162,6 +163,17 @@ class ProfileVC: UIViewController {
     
     @objc func signOutUser() {
         FirebaseAuthService.manager.signOutUser()
+        
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+            let sceneDelegate = windowScene.delegate as? SceneDelegate, let window = sceneDelegate.window
+            else {
+                //MARK: TODO - handle could not swap root view controller
+                return
+        }
+        
+        UIView.transition(with: window, duration: 0.3, options: .transitionFlipFromBottom, animations: {
+           window.rootViewController = LogInVC()
+        })
     }
     
     // MARK: - Private Methods
