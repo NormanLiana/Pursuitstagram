@@ -39,7 +39,7 @@ class ProfileVC: UIViewController {
        let label = UILabel()
         label.font = UIFont(name: "Futura-CondensedExtraBold", size: 24)
         label.textAlignment = .center
-        label.textColor = .systemPink
+        label.textColor = #colorLiteral(red: 0.6871127486, green: 0.2351325154, blue: 0.2614696622, alpha: 1)
         return label
     }()
     
