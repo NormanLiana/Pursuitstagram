@@ -57,14 +57,17 @@ class ImageDVC: UIViewController {
         addSubViews()
         constrainHeaderLabel()
         constrainImage()
+        constrainAvatarImage()
         constrainPostDateLabel()
         getImage()
+        getAvatarOfPoster()
     }
     
     // MARK: - Private Methods
     private func addSubViews() {
         view.addSubview(headerLabel)
         view.addSubview(imageForDVC)
+        view.addSubview(avatarImage)
         view.addSubview(postDateLabel)
     }
     
