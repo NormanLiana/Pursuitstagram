@@ -13,7 +13,8 @@ class FeedCVCell: UICollectionViewCell {
     // MARK: - UI Objects
     lazy var imageInFeed: UIImageView = {
        let img = UIImageView()
-        img.backgroundColor = .darkGray
+        img.backgroundColor = #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 1)
+        img.contentMode = .scaleAspectFit
         return img
     }()
     
