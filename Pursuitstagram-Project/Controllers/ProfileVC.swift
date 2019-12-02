@@ -246,7 +246,7 @@ class ProfileVC: UIViewController {
     private func constrainSaveButton() {
         saveButton.translatesAutoresizingMaskIntoConstraints = false
         
-        [saveButton.topAnchor.constraint(equalTo: displayNameTF.bottomAnchor, constant: 7), saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor), saveButton.widthAnchor.constraint(equalTo: displayNameTF.widthAnchor, multiplier: 0.2), saveButton.heightAnchor.constraint(equalTo: displayNameTF.heightAnchor, multiplier: 0.5)].forEach({$0.isActive = true})
+        [saveButton.topAnchor.constraint(equalTo: displayNameTF.bottomAnchor, constant: 7), saveButton.centerXAnchor.constraint(equalTo: view.centerXAnchor), saveButton.widthAnchor.constraint(equalTo: displayNameTF.widthAnchor, multiplier: 0.5), saveButton.heightAnchor.constraint(equalTo: displayNameTF.heightAnchor, multiplier: 0.75)].forEach({$0.isActive = true})
     }
     
     private func constrainEmailLabel() {
