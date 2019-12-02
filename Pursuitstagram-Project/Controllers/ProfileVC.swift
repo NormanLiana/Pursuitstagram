@@ -14,7 +14,7 @@ class ProfileVC: UIViewController {
     // MARK: - UI Objects
     lazy var headerLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .systemPink
+        label.textColor = #colorLiteral(red: 0.6871127486, green: 0.2351325154, blue: 0.2614696622, alpha: 1)
         label.font = UIFont(name: "Futura-CondensedExtraBold", size: 44)
         label.text = "Profile"
         label.textAlignment = .center
