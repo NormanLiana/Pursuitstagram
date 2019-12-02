@@ -38,6 +38,14 @@ class ImageDVC: UIViewController {
         return img
     }()
     
+    lazy var postedByLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = #colorLiteral(red: 0.6871127486, green: 0.2351325154, blue: 0.2614696622, alpha: 1)
+        label.font = UIFont(name: "Futura-CondensedExtraBold", size: 22)
+        label.textAlignment = .left
+        return label
+    }()
+    
     lazy var postDateLabel: UILabel = {
        let label = UILabel()
         label.text = "Submitted on: \(selectedPost.dateCreated ?? Date())"
@@ -58,6 +66,7 @@ class ImageDVC: UIViewController {
         constrainHeaderLabel()
         constrainImage()
         constrainAvatarImage()
+        constrainPostedByLabel()
         constrainPostDateLabel()
         getImage()
         getAvatarOfPoster()
@@ -69,6 +78,7 @@ class ImageDVC: UIViewController {
         view.addSubview(imageForDVC)
         view.addSubview(avatarImage)
         view.addSubview(postDateLabel)
+        view.addSubview(postedByLabel)
     }
     
     private func setUpVCView() {
@@ -128,7 +138,13 @@ class ImageDVC: UIViewController {
     private func constrainAvatarImage() {
         avatarImage.translatesAutoresizingMaskIntoConstraints = false
         
-        [avatarImage.bottomAnchor.constraint(equalTo: imageForDVC.topAnchor), avatarImage.centerXAnchor.constraint(equalTo: imageForDVC.centerXAnchor), avatarImage.widthAnchor.constraint(equalTo: imageForDVC.widthAnchor, multiplier: 0.25), avatarImage.heightAnchor.constraint(equalTo: avatarImage.widthAnchor)].forEach({$0.isActive = true})
+        [avatarImage.bottomAnchor.constraint(equalTo: imageForDVC.topAnchor), avatarImage.leadingAnchor.constraint(equalTo: imageForDVC.leadingAnchor), avatarImage.widthAnchor.constraint(equalTo: imageForDVC.widthAnchor, multiplier: 0.25), avatarImage.heightAnchor.constraint(equalTo: avatarImage.widthAnchor)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainPostedByLabel() {
+        postedByLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        [postedByLabel.leadingAnchor.constraint(equalTo: avatarImage.trailingAnchor, constant: 15), postedByLabel.bottomAnchor.constraint(equalTo: imageForDVC.topAnchor), postedByLabel.topAnchor.constraint(equalTo: avatarImage.topAnchor), postedByLabel.trailingAnchor.constraint(equalTo: imageForDVC.trailingAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainPostDateLabel() {
