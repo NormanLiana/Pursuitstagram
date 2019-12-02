@@ -23,7 +23,7 @@ class ProfileVC: UIViewController {
     
     lazy var userProfileImage: UIImageView = {
        let img = UIImageView()
-        img.backgroundColor = .darkGray
+        img.backgroundColor = #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 1)
         img.contentMode = .scaleAspectFit
         return img
     }()
@@ -228,7 +228,7 @@ class ProfileVC: UIViewController {
     private func constrainImgPickerButton() {
         imagePickerButton.translatesAutoresizingMaskIntoConstraints = false
         
-        [imagePickerButton.topAnchor.constraint(equalTo: userProfileImage.topAnchor), imagePickerButton.trailingAnchor.constraint(equalTo: userProfileImage.trailingAnchor), imagePickerButton.heightAnchor.constraint(equalTo: userProfileImage.heightAnchor, multiplier: 0.2), imagePickerButton.widthAnchor.constraint(equalTo: imagePickerButton.heightAnchor)].forEach({$0.isActive = true})
+        [imagePickerButton.topAnchor.constraint(equalTo: userProfileImage.topAnchor), imagePickerButton.trailingAnchor.constraint(equalTo: userProfileImage.trailingAnchor), imagePickerButton.heightAnchor.constraint(equalTo: userProfileImage.heightAnchor, multiplier: 0.1), imagePickerButton.widthAnchor.constraint(equalTo: imagePickerButton.heightAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainDisplayNameLabel() {
