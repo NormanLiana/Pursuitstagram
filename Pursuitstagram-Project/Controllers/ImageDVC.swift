@@ -86,6 +86,29 @@ class ImageDVC: UIViewController {
         }
     }
     
+    private func getAvatarOfPoster() {
+        FirestoreService.manager.getUserFromPost(creatorID: selectedPost.creatorID) { (result) in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let user):
+                if let userPhotoURL = user.photoURL {
+                    ImageHelper.shared.getImage(urlStr: userPhotoURL) { [weak self] (result) in
+                        DispatchQueue.main.async {
+                            switch result {
+                            case .success(let imageURLFromFIR):
+                                self?.avatarImage.image = imageURLFromFIR
+                            case.failure(let error):
+                                print(error)
+                            }
+                        }
+                    }
+                    
+                }
+            }
+        }
+    }
+    
     // MARK: - Constraint Methods
     private func constrainHeaderLabel() {
         headerLabel.translatesAutoresizingMaskIntoConstraints = false
