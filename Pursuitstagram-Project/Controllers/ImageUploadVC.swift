@@ -14,7 +14,7 @@ class ImageUploadVC: UIViewController {
     // MARK: - UI Objects
     lazy var headerLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .systemPink
+        label.textColor = #colorLiteral(red: 0.6871127486, green: 0.2351325154, blue: 0.2614696622, alpha: 1)
         label.font = UIFont(name: "Futura-CondensedExtraBold", size: 44)
         label.text = "Upload An Image"
         label.textAlignment = .center
@@ -39,7 +39,7 @@ class ImageUploadVC: UIViewController {
     lazy var uploadButton: UIButton = {
         let button = UIButton()
         button.setTitle("Upload", for: .normal)
-        button.backgroundColor = .systemPink
+        button.backgroundColor = #colorLiteral(red: 0.6871127486, green: 0.2351325154, blue: 0.2614696622, alpha: 1)
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 8
         button.addTarget(self, action: #selector(uploadButtonPressed), for: .touchUpInside)
