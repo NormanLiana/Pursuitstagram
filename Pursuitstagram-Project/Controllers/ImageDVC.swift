@@ -27,6 +27,17 @@ class ImageDVC: UIViewController {
         return img
     }()
     
+    lazy var avatarImage: UIImageView = {
+       let img = UIImageView()
+        img.backgroundColor = #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 1)
+        img.contentMode = .scaleAspectFit
+        img.layer.borderWidth = 1.0
+        img.layer.masksToBounds = false
+        img.layer.cornerRadius = img.frame.size.height/2
+        img.clipsToBounds = true
+        return img
+    }()
+    
     lazy var postDateLabel: UILabel = {
        let label = UILabel()
         label.text = "Submitted on: \(selectedPost.dateCreated ?? Date())"
@@ -86,6 +97,12 @@ class ImageDVC: UIViewController {
         imageForDVC.translatesAutoresizingMaskIntoConstraints = false
         
         [imageForDVC.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor), imageForDVC.leadingAnchor.constraint(equalTo: view.leadingAnchor), imageForDVC.trailingAnchor.constraint(equalTo: view.trailingAnchor), imageForDVC.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.5)].forEach({$0.isActive = true})
+    }
+    
+    private func constrainAvatarImage() {
+        avatarImage.translatesAutoresizingMaskIntoConstraints = false
+        
+        [avatarImage.bottomAnchor.constraint(equalTo: imageForDVC.topAnchor), avatarImage.centerXAnchor.constraint(equalTo: imageForDVC.centerXAnchor), avatarImage.widthAnchor.constraint(equalTo: imageForDVC.widthAnchor, multiplier: 0.25), avatarImage.heightAnchor.constraint(equalTo: avatarImage.widthAnchor)].forEach({$0.isActive = true})
     }
     
     private func constrainPostDateLabel() {
