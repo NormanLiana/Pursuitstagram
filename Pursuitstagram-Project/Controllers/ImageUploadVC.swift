@@ -23,7 +23,7 @@ class ImageUploadVC: UIViewController {
     
     lazy var imageToUpload: UIImageView = {
        let img = UIImageView()
-        img.backgroundColor = .white
+        img.backgroundColor = #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 1)
         img.image = self.currentImage
         img.contentMode = .scaleAspectFit
         return img
